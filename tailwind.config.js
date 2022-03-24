@@ -1,13 +1,9 @@
 module.exports = {
 	mode: 'jit',
+	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	darkMode: false,
-	content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
 	theme: {
 		extend: {
-			// screens: {
-			// 	xxs: '320px',
-			// 	xxxs: '350px',
-			// },
 			colors: {
 				blue: {
 					lighter: '#84B7C6',
