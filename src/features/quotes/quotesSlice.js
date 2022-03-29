@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
 
-export const getQuotes = createAsyncThunk('quotes/getQuotes', async () => {
-	const response = await axios.get(`https://zenquotes.io/api/today`)
+export const getQuotes = createAsyncThunk('dailyQuotes/getQuotes', async () => {
+	const response = await fetch(
+		`https://quote-garden.herokuapp.com/api/v3/quotes`,
+	)
 	const formatResponse = await response.json()
 	console.log(formatResponse)
 	return formatResponse
@@ -11,11 +12,11 @@ export const getQuotes = createAsyncThunk('quotes/getQuotes', async () => {
 export const quotesSlice = createSlice({
 	name: 'quotes',
 	initialState: {
-		quotes: [],
+		dailyQuotes: [],
 	},
 	extraReducers: {
 		[getQuotes.fulfilled]: (state, action) => {
-			state.quotes = action.payload
+			state.dailyQuotes = action.payload
 		},
 	},
 })
