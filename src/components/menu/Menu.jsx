@@ -1,15 +1,21 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import {
+	IoLibraryOutline,
 	IoExitOutline,
-	IoBookOutline,
+	IoNewspaperOutline,
 	IoPartlySunnyOutline,
 } from 'react-icons/io5'
 
 const menuData = [
 	{
+		name: 'Dashboard',
+		icon: <IoLibraryOutline />,
+		path: '/dashboard',
+	},
+	{
 		name: 'News Feed',
-		icon: <IoBookOutline />,
+		icon: <IoNewspaperOutline />,
 		path: '/news',
 	},
 	{

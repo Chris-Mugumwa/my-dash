@@ -1,20 +1,29 @@
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { getQuotes } from '../../features/quotes/quotesSlice'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 function Quotes() {
-	const dispatch = useDispatch()
-	const dailyQuote = useSelector(state => state.quotes.dailyQuotes)
-	console.log(dailyQuote)
+	const [result, setResult] = useState(undefined)
 
 	useEffect(() => {
-		dispatch(getQuotes())
-	}, [dispatch])
+		axios
+			.get(
+				`https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json`,
+			)
+			.then(response => {
+				let dataQuotes = response.data.quotes
+				let randomIndex = Math.floor(Math.random() * dataQuotes.length)
+				let randomQuote = dataQuotes[randomIndex]
+				setResult(randomQuote)
+			})
+	}, [setResult])
 
 	return (
-		<div>
-			<h1>{dailyQuote.q}</h1>
-		</div>
+		<section className='relative flex flex-col justify-center w-full overflow-y-scroll transition lg:hover:scrollbar-thumb-transparent scroll scroll-thumb-blue-800 scrollbar-thin scroll-thumb-rounded-md'>
+			<p className='text-white font-poppins lg:text-xl'>{result?.quote}</p>
+			<h4 className='self-end text-yellow-dark font-ropa-sans'>
+				{result?.author}
+			</h4>
+		</section>
 	)
 }
 

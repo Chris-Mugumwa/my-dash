@@ -20,7 +20,7 @@
 	}
 
 	.link-normal {
-		@apply flex items-center justify-center w-full gap-1 px-4 py-2 text-white transition duration-300 rounded-md hover:bg-blue-lighter font-ropa-sans;
+		@apply flex items-center justify-center w-full gap-1 px-4 py-2 text-white transition duration-300 rounded-md hover:bg-blue-lighter font-ropa-sans hover:text-black-dark;
 	}
 
 	.link-active {
@@ -45,5 +45,29 @@
 
 	.dashboard-card {
 		@apply p-2 rounded-md bg-blue-light xl:p-6;
+	}
+
+	.weather-container {
+		@apply flex justify-around w-full gap-1 mt-1 lg:mt-6;
+	}
+
+	.weather-subcontainer {
+		@apply flex flex-col items-center gap-1 lg:gap-3;
+	}
+
+	.weather-label {
+		@apply text-sm font-medium text-white xl:text-xl md:text-base;
+	}
+
+	.weather-heading {
+		@apply flex items-center gap-1;
+	}
+
+	.weather-icon {
+		@apply text-teal-light;
+	}
+
+	.weather-subheading {
+		@apply text-xs text-white font-poppins xl:text-base;
 	}
 }
