@@ -1,3 +1,73 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	.field-primary {
+		@apply h-10 px-4 py-2 text-gray-400 transition rounded-lg bg-blue-dark placeholder-blue-light focus:outline-none focus:ring-2 focus:ring-blue-500;
+	}
+
+	.error-message {
+		@apply absolute top-[1%] right-[1%] text-red-900 text-base ml-2 transition duration-300 font-semibold;
+	}
+
+	.button-auth {
+		@apply w-full px-4 py-2 text-xl text-white transition border-none rounded-lg bg-yellow-dark font-ropa-sans hover:bg-yellow-500 active:bg-yellow-dark focus:outline-none focus:ring-2 focus:ring-yellow-600 active:outline-none;
+	}
+
+	.button-google {
+		@apply flex items-center justify-center p-2 transition transform bg-white rounded-md cursor-pointer hover:scale-110 active:scale-100 focus:outline-none;
+	}
+
+	.link-normal {
+		@apply flex items-center justify-center w-full gap-1 px-4 py-2 text-white transition duration-300 rounded-md hover:bg-blue-lighter font-ropa-sans hover:text-black-dark;
+	}
+
+	.link-active {
+		@apply flex items-center justify-center w-full gap-1 px-4 py-2 text-white transition duration-300 rounded-md bg-blue-dark font-ropa-sans;
+	}
+
+	.menu-icon {
+		@apply w-8 h-8 text-white transition duration-300 cursor-pointer hover:scale-105;
+	}
+
+	.menu-closed {
+		@apply fixed z-20 px-2 py-4 transition duration-500 rounded-md -translate-x-60 bg-blue-light ring-2 ring-yellow-600;
+	}
+
+	.menu-open {
+		@apply fixed z-20 px-2 py-4 transition duration-500 rounded-md shadow-md -translate-x-0 bg-blue-light ring-2 ring-yellow-600;
+	}
+
+	.form-input {
+		@apply px-4 py-2 text-white rounded-md bg-blue-light font-poppins focus:outline-none focus:ring-2 focus:ring-blue-500;
+	}
+
+	.dashboard-card {
+		@apply p-2 rounded-md bg-blue-light xl:p-6;
+	}
+
+	.weather-container {
+		@apply flex justify-around w-full gap-1 mt-1 lg:mt-6;
+	}
+
+	.weather-subcontainer {
+		@apply flex flex-col items-center gap-1 lg:gap-3;
+	}
+
+	.weather-label {
+		@apply text-sm font-medium text-white xl:text-xl md:text-base;
+	}
+
+	.weather-heading {
+		@apply flex items-center gap-1;
+	}
+
+	.weather-icon {
+		@apply text-teal-light;
+	}
+
+	.weather-subheading {
+		@apply text-xs text-white font-poppins xl:text-base;
+	}
+}

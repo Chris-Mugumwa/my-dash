@@ -1,7 +1,6 @@
 module.exports = {
 	mode: 'jit',
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-	darkMode: false,
 	theme: {
 		extend: {
 			colors: {
@@ -19,6 +18,10 @@ module.exports = {
 				red: {
 					light: '#EC4530',
 				},
+				black: {
+					faded: '#000000e6',
+					dark: '#000',
+				},
 			},
 			fontFamily: {
 				poppins: ['Poppins', 'sans-serif'],
@@ -26,5 +29,5 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [require('tailwind-scrollbar')],
 }

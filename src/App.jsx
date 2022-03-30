@@ -11,7 +11,7 @@ function App() {
 	const location = useLocation()
 
 	return (
-		<div className='grid h-screen grid-cols-7 grid-rows-[3rem_repeat(6,_1fr)] gap-1 px-4 py-2 App bg-blue-dark xl:px-6 xl:py-4 xl:gap-2 overflow-hidden'>
+		<div className='grid h-screen grid-cols-7 grid-rows-[3rem_1fr] gap-1 px-4 py-2 App bg-blue-dark xl:px-6 xl:py-4 xl:gap-2 overflow-hidden max-w-screen-2xl'>
 			<Navigation />
 			<AnimatePresence exitBeforeEnter>
 				<Routes location={location} key={location.pathname}>
