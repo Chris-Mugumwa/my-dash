@@ -4,7 +4,7 @@ import { setDoc, doc, deleteDoc, serverTimestamp } from 'firebase/firestore'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 
-function BookmarksModal({ isOpen, toggle }) {
+function BookmarksModalThree({ isOpen, toggle }) {
 	const [name, setName] = useState('')
 	const [url, setUrl] = useState('')
 	const currentUser = auth?.currentUser
@@ -13,8 +13,8 @@ function BookmarksModal({ isOpen, toggle }) {
 		db,
 		'users',
 		`${currentUser.uid}`,
-		'bookmarks',
-		`bookmark`,
+		'bookmarksThree',
+		'bookmarkThree',
 	)
 
 	const addBookmark = () => {
@@ -22,7 +22,7 @@ function BookmarksModal({ isOpen, toggle }) {
 		setDoc(bookmarksRef, {
 			name,
 			url,
-			favicon: `https://www.google.com/s2/favicons?domain=${url}&sz=36`,
+			favicon: `https://www.google.com/s2/favicons?domain=${url}&sz=48`,
 			createdAt: serverTimestamp(),
 		}).then(() => toggle())
 	}
@@ -34,8 +34,8 @@ function BookmarksModal({ isOpen, toggle }) {
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
-					className='fixed z-50 top-0 left-0 right-0 flex justify-center w-[100vw] h-[100vh] bg-black-faded items-center gap-2'>
-					<div className='p-4 flex flex-col gap-2 rounded-md bg-blue-dark h-[14rem] w-[80%] md:w-[55%] lg:w-[45%] '>
+					className='fixed z-50 top-0 left-0 right-0 flex justify-center w-[100vw] h-[100vh] bg-black-faded items-center'>
+					<div className='p-4 flex flex-col gap-2 rounded-md bg-blue-dark h-[14rem] w-[80%] md:w-[55%] lg:w-[45%]'>
 						<form className='flex flex-col gap-2' autoComplete='off'>
 							<label className='self-start text-sm text-blue-lighter font-poppins'>
 								name
@@ -43,7 +43,7 @@ function BookmarksModal({ isOpen, toggle }) {
 							<input
 								type='text'
 								name='name'
-								placeholder='e.g. Gmail'
+								placeholder='e.g. Hotmail'
 								className='form-input'
 								onChange={event => setName(event.target.value)}
 								value={name}
@@ -82,4 +82,4 @@ function BookmarksModal({ isOpen, toggle }) {
 	)
 }
 
-export default BookmarksModal
+export default BookmarksModalThree

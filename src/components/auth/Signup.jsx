@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useGoogleAuth } from '../../hooks/useGoogleAuth'
 import { db, auth } from '../../firebase'
 import { Formik, Field, ErrorMessage, Form } from 'formik'
-import { doc, setDoc } from 'firebase/firestore'
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore'
 import {
 	updateProfile,
 	createUserWithEmailAndPassword,

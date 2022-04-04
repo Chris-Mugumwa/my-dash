@@ -68,6 +68,22 @@
 	}
 
 	.weather-subheading {
-		@apply text-xs text-white font-poppins xl:text-base;
+		@apply flex gap-1 text-xs text-white font-poppins xl:text-base;
 	}
+
+	.bookmark-container {
+		@apply relative flex flex-col justify-center px-4 py-2 rounded-md hover:bg-blue-dark transition duration-300 h-[4rem];
+	}
+
+	.bookmark-icon {
+		@apply absolute right-0 text-white transition duration-300 cursor-pointer hover:scale-110 top-1;
+	}
+
+	.bookmark-link {
+		@apply w-10 h-10 p-1 bg-white rounded-full;
+	}
+
+   .modal-done {
+      @apply px-4 py-1 text-white transition duration-300 rounded-md bg-yellow-dark font-ropa-sans hover:bg-yellow-500;
+   }
 }

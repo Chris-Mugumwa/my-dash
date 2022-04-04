@@ -5,7 +5,7 @@ function Date() {
 
 	return (
 		<>
-			<h3 className='text-lg text-white transition-all sm:text-2xl md:text-3xl xl:text-3xl font-poppins'>{`${day}, ${today} ${month}, ${year}`}</h3>
+			<h3 className='text-lg text-center text-white transition-all sm:text-2xl md:text-3xl xl:text-3xl font-poppins'>{`${day}, ${today} ${month}, ${year}`}</h3>
 		</>
 	)
 }

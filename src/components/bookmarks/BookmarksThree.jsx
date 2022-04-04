@@ -3,32 +3,37 @@ import { useModal } from '../../hooks/useModal'
 import { auth, db } from '../../firebase'
 import { onSnapshot, collection } from 'firebase/firestore'
 import { IoEllipsisVerticalOutline } from 'react-icons/io5'
-import BookmarksModal from './BookmarksModal'
+import BookmarksModalThree from './BookmarksModalThree'
 
-function Bookmarks() {
-	const [bookmarkOne, setBookmarkOne] = useState([
-		{
-			name: 'youtube',
-			url: 'https://www.youtube.com',
-		},
-	])
+function BookmarksThree() {
+	const [bookmarkThree, setBookmarkThree] = useState({
+		name: 'bbc news',
+		url: 'https://www.bbc.com/news/world',
+	})
 	const currentUser = auth?.currentUser
 	const { isOpen, toggle } = useModal()
-	const colRef = collection(db, 'users', `${currentUser?.uid}`, 'bookmarks')
+	const colRef = collection(
+		db,
+		'users',
+		`${currentUser?.uid}`,
+		'bookmarksThree',
+	)
 
 	useEffect(() => {
 		onSnapshot(colRef, snapshot => {
 			let marks = []
 			snapshot.forEach(doc => {
 				marks.push({ ...doc.data(), id: doc.id })
-				setBookmarkOne(marks[0])
+				setBookmarkThree(marks[0])
 			})
 		})
 	}, [])
 
 	return (
 		<>
-			{isOpen === true && <BookmarksModal isOpen={isOpen} toggle={toggle} />}
+			{isOpen === true && (
+				<BookmarksModalThree isOpen={isOpen} toggle={toggle} />
+			)}
 			<div className='bookmark-container'>
 				<IoEllipsisVerticalOutline
 					className='bookmark-icon'
@@ -36,12 +41,12 @@ function Bookmarks() {
 				/>
 
 				<a
-					href={bookmarkOne?.url}
+					href={bookmarkThree?.url}
 					target='_blank'
 					rel='noopener noreferrer'
 					className='bookmark-link'>
 					<img
-						src={`https://www.google.com/s2/favicons?domain=${bookmarkOne?.url}&sz=48`}
+						src={`https://www.google.com/s2/favicons?domain=${bookmarkThree?.url}&sz=48`}
 						alt='link'
 					/>
 				</a>
@@ -50,4 +55,4 @@ function Bookmarks() {
 	)
 }
 
-export default Bookmarks
+export default BookmarksThree
