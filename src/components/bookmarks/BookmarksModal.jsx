@@ -22,7 +22,7 @@ function BookmarksModal({ isOpen, toggle }) {
 		setDoc(bookmarksRef, {
 			name,
 			url,
-			favicon: `https://www.google.com/s2/favicons?domain=${url}&sz=36`,
+			favicon: `https://www.google.com/s2/favicons?domain=${url}&sz=48`,
 			createdAt: serverTimestamp(),
 		}).then(() => toggle())
 	}

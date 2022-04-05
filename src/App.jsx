@@ -6,6 +6,7 @@ import WelcomeContainer from './containers/welcome/WelcomeContainer'
 import SignupContainer from './containers/auth/SignupContainer'
 import LoginContainer from './containers/auth/LoginContainer'
 import DashboardContainer from './containers/dashboard/DashboardContainer'
+import WeeklyWeatherContainer from './containers/weather/WeeklyWeatherContainer'
 
 function App() {
 	const location = useLocation()
@@ -22,6 +23,10 @@ function App() {
 						path='/dashboard'
 						exact
 						element={<DashboardContainer />}
+					/>
+					<Route
+						path='weather-feed'
+						element={<WeeklyWeatherContainer />}
 					/>
 				</Routes>
 			</AnimatePresence>

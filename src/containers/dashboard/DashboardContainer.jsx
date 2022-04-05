@@ -8,8 +8,9 @@ const SearchAndUserContainer = React.lazy(() =>
 const DateTimeContainer = React.lazy(() => import('../time/DateTimeContainer'))
 const QuotesContainer = React.lazy(() => import('../quotes/QuotesContainer'))
 const WeatherContainer = React.lazy(() => import('../weather/WeatherContainer'))
-const NewsContainer = React.lazy(() => import('../news/NewsContainer'))
-const NotesContainer = React.lazy(() => import('../notes/NotesContainer'))
+const NotesNewsContainer = React.lazy(() =>
+	import('../notes-and-news/NotesNewsContainer'),
+)
 const BookmarksContainer = React.lazy(() =>
 	import('../bookmarks/BookmarksContainer'),
 )
@@ -26,8 +27,7 @@ function DashboardContainer() {
 				<DateTimeContainer />
 				<QuotesContainer />
 				<WeatherContainer />
-				<NewsContainer />
-				<NotesContainer />
+				<NotesNewsContainer />
 				<BookmarksContainer />
 			</motion.main>
 		</Suspense>

@@ -15,7 +15,7 @@ function Weather() {
 		<section className='relative z-20 flex flex-col items-center justify-start w-full h-full gap-1 overflow-hidden'>
 			{loading ||
 				(weatherData === undefined && (
-					<div className='relative z-50 flex items-center justify-center w-full h-full bg-blue-light'>
+					<div className='relative z-50 flex items-center justify-center w-full h-full'>
 						<ClipLoader color={'#e6bf17'} size={35} />
 					</div>
 				))}

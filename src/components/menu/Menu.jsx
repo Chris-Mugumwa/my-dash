@@ -16,12 +16,12 @@ const menuData = [
 	{
 		name: 'News Feed',
 		icon: <IoNewspaperOutline />,
-		path: '/news',
+		path: '/news-feed',
 	},
 	{
 		name: 'Weather Data',
 		icon: <IoPartlySunnyOutline />,
-		path: '/weather',
+		path: '/weather-feed',
 	},
 ]
 
@@ -29,7 +29,7 @@ function Menu({ isOpen, toggle }) {
 	const [menuItems] = useState(menuData)
 
 	return (
-		<nav className={isOpen === false ? 'menu-closed' : 'menu-open'}>
+		<nav className={!isOpen ? 'menu-closed' : 'menu-open'}>
 			<ul className='flex flex-col gap-2'>
 				{menuItems.map(item => (
 					<NavLink

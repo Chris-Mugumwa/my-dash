@@ -80,10 +80,18 @@
 	}
 
 	.bookmark-link {
-		@apply w-10 h-10 p-1 bg-white rounded-full;
+		@apply w-10 h-10 p-1 overflow-hidden bg-white rounded-full cursor-pointer;
 	}
 
-   .modal-done {
-      @apply px-4 py-1 text-white transition duration-300 rounded-md bg-yellow-dark font-ropa-sans hover:bg-yellow-500;
-   }
+	.modal-done {
+		@apply px-4 py-1 text-white transition duration-300 rounded-md bg-yellow-dark font-ropa-sans hover:bg-yellow-500;
+	}
+
+	.tab-normal {
+		@apply flex justify-center p-2 text-white transition duration-300 rounded-md cursor-pointer bg-blue-light hover:bg-blue-lighter hover:text-gray-800;
+	}
+
+	.tab-active {
+		@apply flex justify-center p-2 text-white transition duration-300 rounded-md cursor-pointer bg-blue-dark;
+	}
 }
