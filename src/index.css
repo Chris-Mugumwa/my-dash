@@ -103,3 +103,13 @@
 		@apply justify-center w-full text-center weather-label text-blue-lighter font-ropa-sans;
 	}
 }
+
+::-webkit-scrollbar {
+	width: 0.8rem;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #002f58;
+	height: 2rem;
+	border-radius: 20rem;
+}
