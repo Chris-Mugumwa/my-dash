@@ -12,7 +12,7 @@ function WelcomeContainer() {
 				animate={{ opacity: 1 }}
 				initial={{ opacity: 0 }}
 				exit={{ opacity: 0 }}
-				className='relative flex items-center justify-between row-start-2 row-end-[8] col-span-full'>
+				className='relative flex items-center justify-between row-start-2 row-end-[8] col-span-full min-h-screen'>
 				<Welcome />
 				<Blob />
 			</motion.section>

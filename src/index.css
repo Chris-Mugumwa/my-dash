@@ -48,7 +48,7 @@
 	}
 
 	.weather-container {
-		@apply flex justify-around w-full gap-1 mt-1 lg:mt-6;
+		@apply flex flex-col justify-around w-full gap-1 mt-1 md:flex-row lg:mt-6;
 	}
 
 	.weather-subcontainer {
@@ -102,4 +102,14 @@
 	.weekly-sublabel {
 		@apply justify-center w-full text-center weather-label text-blue-lighter font-ropa-sans;
 	}
+}
+
+::-webkit-scrollbar {
+	width: 0.8rem;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #002f58;
+	height: 2rem;
+	border-radius: 20rem;
 }

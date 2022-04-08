@@ -17,7 +17,7 @@ function NotesNewsContainer() {
 
 	return (
 		<>
-			<div className='absolute top-[64%] -left-5 lg:-left-6'>
+			<div className='fixed top-[64%] -left-0'>
 				{!isOpen && (
 					<IoChevronForwardOutline
 						className='w-6 h-6 menu-icon hover:text-yellow-dark'
