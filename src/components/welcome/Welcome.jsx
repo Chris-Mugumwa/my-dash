@@ -4,7 +4,7 @@ function Welcome() {
 	const navigate = useNavigate()
 
 	return (
-		<section className='relative z-20 flex flex-col items-center justify-center w-full h-full sm:w-1/2 md:items-start'>
+		<section className='relative z-20 flex flex-col items-center justify-center w-full h-screen sm:w-1/2 md:items-start'>
 			<h1 className='mb-4 font-medium tracking-wider text-white text-7xl md:8xl xl:text-9xl font-ropa-sans'>
 				My Dash
 			</h1>

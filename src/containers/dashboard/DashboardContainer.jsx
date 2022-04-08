@@ -14,6 +14,9 @@ const NotesNewsContainer = React.lazy(() =>
 const BookmarksContainer = React.lazy(() =>
 	import('../bookmarks/BookmarksContainer'),
 )
+const BookmarkContainer = React.lazy(() =>
+	import('../bookmarks/BookmarkContainer'),
+)
 
 function DashboardContainer() {
 	return (
@@ -29,6 +32,7 @@ function DashboardContainer() {
 				<WeatherContainer />
 				<NotesNewsContainer />
 				<BookmarksContainer />
+				<BookmarkContainer />
 			</motion.main>
 		</Suspense>
 	)

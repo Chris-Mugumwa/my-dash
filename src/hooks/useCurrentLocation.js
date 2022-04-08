@@ -16,7 +16,6 @@ export const useCurrentLocation = () => {
 			.get(`https://ipapi.co/json/`)
 			.then(response => {
 				setLoading(false)
-				setError(false)
 				setLocation(response?.data)
 			})
 			.catch(() => {
@@ -25,5 +24,5 @@ export const useCurrentLocation = () => {
 			})
 	}
 
-	return { location }
+	return { location, loading, error }
 }

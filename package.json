@@ -8,28 +8,19 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@js-temporal/polyfill": "^0.4.0",
-		"@reduxjs/toolkit": "^1.8.0",
-		"@splidejs/react-splide": "^0.6.20",
 		"axios": "^0.26.1",
-		"classnames": "^2.3.1",
 		"firebase": "^9.6.9",
 		"formik": "^2.2.9",
 		"framer-motion": "^6.2.8",
 		"react": "^17.0.2",
 		"react-beautiful-dnd": "^13.1.0",
-		"react-card-flip": "^1.1.5",
-		"react-dnd": "^15.1.1",
 		"react-dnd-html5-backend": "^15.1.2",
 		"react-dom": "^17.0.2",
 		"react-icons": "^4.3.1",
 		"react-nice-avatar": "^1.2.4",
-		"react-redux": "^7.2.6",
 		"react-router-dom": "6",
 		"react-spinners": "^0.11.0",
-		"react-tabs": "^4.2.0",
 		"react-toastify": "^8.2.0",
-		"uuid": "^8.3.2",
 		"yup": "^0.32.11"
 	},
 	"devDependencies": {

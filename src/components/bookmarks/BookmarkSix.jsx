@@ -2,24 +2,26 @@ import { useState, useEffect } from 'react'
 import { useModal } from '../../hooks/useModal'
 import { auth, db } from '../../firebase'
 import { onSnapshot, collection } from 'firebase/firestore'
-import BookmarksModalTwo from './BookmarksModalTwo'
 import { IoEllipsisVerticalOutline } from 'react-icons/io5'
+import BookmarkModalSix from './BookmarksModal'
 
-function BookmarksTwo() {
-	const [bookmarkTwo, setBookmarkTwo] = useState({
-		name: 'linkedin',
-		url: 'https://www.linkedin.com',
-	})
+function BookmarkSix() {
+	const [bookmarkSix, setBookmarkSix] = useState([
+		{
+			name: 'Spotify',
+			url: 'https://www.spotify.com',
+		},
+	])
 	const currentUser = auth?.currentUser
 	const { isOpen, toggle } = useModal()
-	const colRef = collection(db, 'users', `${currentUser?.uid}`, 'bookmarksTwo')
+	const colRef = collection(db, 'users', `${currentUser?.uid}`, 'bookmarksSix')
 
 	useEffect(() => {
 		onSnapshot(colRef, snapshot => {
 			let marks = []
 			snapshot.forEach(doc => {
 				marks.push({ ...doc.data(), id: doc.id })
-				setBookmarkTwo(marks[0])
+				setBookmarkSix(marks[0])
 			})
 		})
 	}, [])
@@ -27,7 +29,7 @@ function BookmarksTwo() {
 	return (
 		<>
 			{isOpen === true && (
-				<BookmarksModalTwo isOpen={isOpen} toggle={toggle} />
+				<BookmarkModalSix isOpen={isOpen} toggle={toggle} />
 			)}
 			<div className='bookmark-container'>
 				<IoEllipsisVerticalOutline
@@ -35,19 +37,17 @@ function BookmarksTwo() {
 					onClick={toggle}
 				/>
 
-				<a
-					target='_blank'
-					rel='noopener noreferrer'
-					href={`https://${bookmarkTwo?.url}`}
+				<div
+					onClick={() => window.open(`${bookmarkSix?.url}`, '_blank')}
 					className='bookmark-link'>
 					<img
-						src={`https://www.google.com/s2/favicons?domain=https://${bookmarkTwo?.url}&sz=48`}
+						src={`https://www.google.com/s2/favicons?domain=${bookmarkSix?.url}&sz=48`}
 						alt='link'
 					/>
-				</a>
+				</div>
 			</div>
 		</>
 	)
 }
 
-export default BookmarksTwo
+export default BookmarkSix

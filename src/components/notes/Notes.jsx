@@ -24,7 +24,6 @@ function Notes() {
 	const [isComplete, setIsComplete] = useState(false)
 	const currentUser = auth?.currentUser
 	const [randomId, setRandomId] = useState(1)
-
 	const colRef = collection(db, 'users', `${currentUser?.uid}`, 'notes')
 
 	useEffect(() => {
@@ -42,7 +41,7 @@ function Notes() {
 			'notes',
 			`${randomId}`,
 		)
-		if (newNote.length >= 1) {
+		if (newNote?.length >= 1) {
 			setDoc(notesRef, {
 				id: randomId,
 				note: newNote,
