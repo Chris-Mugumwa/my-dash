@@ -8,7 +8,7 @@ import { IoEllipsisVerticalOutline } from 'react-icons/io5'
 function BookmarksTwo() {
 	const [bookmarkTwo, setBookmarkTwo] = useState({
 		name: 'linkedin',
-		url: 'https://www.linkedin.com',
+		url: 'www.linkedin.com',
 	})
 	const currentUser = auth?.currentUser
 	const { isOpen, toggle } = useModal()

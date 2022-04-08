@@ -9,8 +9,6 @@ function WeeklyWeatherContainer() {
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		if (destination.length <= 0) return null
-		if (place.length <= 0) return null
 		setPlace(destination)
 	}
 
