@@ -25,7 +25,7 @@ function DashboardContainer() {
 				animate={{ opacity: 1 }}
 				initial={{ opacity: 0 }}
 				exit={{ opacity: 0 }}
-				className='relative grid col-span-full row-start-2 row-end-[8] grid-cols-7 grid-rows-[3rem_repeat(3,_1fr)_5rem] gap-1'>
+				className='relative grid col-span-full row-start-2 row-end-[8] grid-cols-7 md:grid-rows-[3rem_repeat(3,_1fr)_5rem] grid-rows-[3rem_repeat(3,minmax(fit-content,_1fr))_minmax(fit-content,_2fr)_5rem] gap-1 scrollbar scroll-thumb-yellow-dark scrollbar-track-transparent scroll-thumb-rounded-full'>
 				<SearchAndUserContainer />
 				<DateTimeContainer />
 				<QuotesContainer />
