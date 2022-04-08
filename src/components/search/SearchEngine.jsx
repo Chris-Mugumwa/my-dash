@@ -6,6 +6,7 @@ function SearchEngine() {
 
 	const searchEngine = event => {
 		event.preventDefault()
+		if (link.length <= 0) return null
 		window.open(`https://www.google.com/search?q=${link}`, '_blank')
 	}
 
@@ -18,6 +19,7 @@ function SearchEngine() {
 				type='text'
 				name='google search'
 				id='googleSearch'
+				required
 				placeholder='Google Search'
 				onChange={event => setLink(event.target.value)}
 				value={link}

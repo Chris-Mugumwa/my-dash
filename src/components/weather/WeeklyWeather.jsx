@@ -1,47 +1,180 @@
+import { useState, useEffect, useRef } from 'react'
 import { useWeeklyWeather } from '../../hooks/useWeeklyWeather'
 import ClipLoader from 'react-spinners/ClipLoader'
-import WeatherSearch from './WeatherSearch'
+import WeeklyCurrent from './WeeklyCurrent'
+import WeeklyTomorrow from './WeeklyTomorrow'
+import { motion } from 'framer-motion'
 import {
 	IoIceCreamOutline,
-	IoWaterOutline,
-	IoSpeedometerOutline,
-	IoBalloonOutline,
-	IoCloudyNightOutline,
-	IoPartlySunnyOutline,
-	IoCloudOutline,
-	IoLeafOutline,
+	IoMoonOutline,
+	IoSunnyOutline,
 } from 'react-icons/io5'
 
-function WeeklyWeather() {
-	const { loading, error, location, weeklyData } = useWeeklyWeather()
+function WeeklyWeather({ place }) {
+	const { loading, location, weeklyData } = useWeeklyWeather(place)
+	const [current, setCurrent] = useState(undefined)
+	const [daily, setDaily] = useState(undefined)
+	const [width, setWidth] = useState(0)
+	const carousel = useRef()
 
-	console.log(weeklyData)
+	useEffect(() => {
+		setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
+	}, [])
+
+	useEffect(() => {
+		setCurrent(weeklyData?.current)
+		setDaily(weeklyData?.daily)
+	}, [setCurrent, setDaily, weeklyData])
+
+	const localTime = timeStamp => {
+		const days = [
+			'Sunday',
+			'Monday',
+			'Tuesday',
+			'Wednesday',
+			'Thursday',
+			'Friday',
+			'Saturday',
+		]
+
+		const dayNum = new Date(timeStamp * 1e3).getDay()
+		const localized = days[dayNum]
+		return localized
+	}
+
 	return (
 		<>
-			{loading && <ClipLoader color={'#e6bf17'} size={35} />}
+			{loading && (
+				<div className='absolute z-50 flex items-center justify-center h-[80%] w-[90%]'>
+					<ClipLoader color={'#e6bf17'} size={35} />
+				</div>
+			)}
 
-			{error ||
-				(weeklyData === undefined && (
-					<div className='relative z-50 flex items-center justify-center w-full h-full bg-blue-light'>
-						<p className='text-base text-center md:text-lg xl:text-2xl text-yellow-dark font-poppins'>
-							Something went wrong
-						</p>
-					</div>
-				))}
+			<>
+				<WeeklyCurrent
+					current={current}
+					location={location}
+					daily={daily}
+					place={place}
+				/>
 
-			<WeatherSearch />
+				<WeeklyTomorrow daily={daily} />
 
-			<div className='row-start-2 row-end-3 lg:row-end-6 dashboard-card col-span-full lg:col-start-6 lg:col-end-[8]'>
-				<h2>current weather</h2>
-			</div>
+				<motion.div
+					ref={carousel}
+					className='row-start-4 row-end-6 overflow-x-hidden lg:row-start-4 lg:row-end-5 dashboard-card col-span-full cursor-grab '
+					whileTap={{ cursor: 'grabbing' }}>
+					<motion.div
+						drag='x'
+						dragConstraints={{ right: 0, left: -width }}
+						whileTap={{ cursor: 'grabbing' }}
+						className='flex flex-col gap-2 lg:flex-row cursor-grab'>
+						{daily?.map(day => (
+							<motion.section
+								whileTap={{ cursor: 'grabbing' }}
+								className='flex flex-col gap-2 p-2 rounded-md cursor-grab bg-blue-dark'
+								key={day?.dt}>
+								<h2 className='pb-1 text-white border-b-2 border-b-yellow-dark font-ropa-sans w-[10%]'>
+									{localTime(day?.dt)}
+								</h2>
+								<div className='flex justify-around lg:w-[25rem]'>
+									<div>
+										<label className='weekly-label'>
+											<IoMoonOutline className='weather-icon' />
+											Morning
+										</label>
+										<div className='flex flex-col items-center gap-1'>
+											<label className='weekly-sublabel'>Temp</label>
+											<h5 className='weather-heading'>
+												<IoIceCreamOutline className='weather-icon' />
+												<span className='weather-subheading'>
+													{day?.temp?.morn}
+												</span>
+												<span className='text-sm text-yellow-dark'>
+													&#8451;
+												</span>
+											</h5>
+											<label className='weekly-sublabel'>
+												Feels Like
+											</label>
+											<h5 className='weather-heading'>
+												<IoIceCreamOutline className='weather-icon' />
+												<span className='weather-subheading'>
+													{day?.feels_like?.morn}
+												</span>
+												<span className='text-sm text-yellow-dark'>
+													&#8451;
+												</span>
+											</h5>
+										</div>
+									</div>
 
-			<div className='row-start-3 row-end-4 dashboard-card lg:row-start-2 lg:row-end-4 col-span-full lg:col-start-1 lg:col-end-6'>
-				<h2>Tomorrow</h2>
-			</div>
-
-			<div className='row-start-4 row-end-5 lg:row-start-4 lg:row-end-5 dashboard-card col-span-full lg:col-start-1 lg:col-end-6'>
-				<h2>Rest of the week</h2>
-			</div>
+									<div>
+										<label className='weekly-label'>
+											<IoMoonOutline className='weather-icon' />
+											Day
+										</label>
+										<div className='flex flex-col items-center gap-1'>
+											<label className='weekly-sublabel'>Temp</label>
+											<h5 className='weather-heading'>
+												<IoIceCreamOutline className='weather-icon' />
+												<span className='weather-subheading'>
+													{day?.temp?.day}
+												</span>
+												<span className='text-sm text-yellow-dark'>
+													&#8451;
+												</span>
+											</h5>
+											<label className='weekly-sublabel'>
+												Feels Like
+											</label>
+											<h5 className='weather-heading'>
+												<IoIceCreamOutline className='weather-icon' />
+												<span className='weather-subheading'>
+													{day?.feels_like?.day}
+												</span>
+												<span className='text-sm text-yellow-dark'>
+													&#8451;
+												</span>
+											</h5>
+										</div>
+									</div>
+									<div>
+										<label className='weekly-label'>
+											<IoSunnyOutline className='weather-icon' />
+											Night
+										</label>
+										<div className='flex flex-col items-center gap-1'>
+											<label className='weekly-sublabel'>Temp</label>
+											<h5 className='weather-heading'>
+												<IoIceCreamOutline className='weather-icon' />
+												<span className='weather-subheading'>
+													{day?.temp?.night}
+												</span>
+												<span className='text-sm text-yellow-dark'>
+													&#8451;
+												</span>
+											</h5>
+											<label className='weekly-sublabel'>
+												Feels Like
+											</label>
+											<h5 className='weather-heading'>
+												<IoIceCreamOutline className='weather-icon' />
+												<span className='weather-subheading'>
+													{day?.feels_like?.night}
+												</span>
+												<span className='text-sm text-yellow-dark'>
+													&#8451;
+												</span>
+											</h5>
+										</div>
+									</div>
+								</div>
+							</motion.section>
+						))}
+					</motion.div>
+				</motion.div>
+			</>
 		</>
 	)
 }

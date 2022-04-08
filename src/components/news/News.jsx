@@ -2,22 +2,17 @@ import { useCurrentNews } from '../../hooks/useCurrentNews'
 import ClipLoader from 'react-spinners/ClipLoader'
 
 function News() {
-	const { loading, error, news, articles } = useCurrentNews()
+	const { loading, news, articles } = useCurrentNews()
 
 	return (
 		<>
 			{loading ||
 				(news === undefined && (
-					<div className='relative z-50 flex items-center justify-center w-full h-full bg-blue-dark'>
+					<div className='absolute z-50 flex items-center justify-center w-full h-full bg-blue-dark'>
 						<ClipLoader color={'#e6bf17'} size={35} />
 					</div>
 				))}
-			{error && (
-				<p className='text-base text-center md:text-lg xl:text-2xl text-yellow-dark font-poppins'>
-					Something went wrong
-				</p>
-			)}
-			{news !== undefined &&
+			{!loading &&
 				news?.map(articles => (
 					<div
 						className='flex items-center justify-between col-span-1 row-span-2 p-1 transition duration-300 cursor-pointer lg:row-span-1 flip-card bg-blue-light'

@@ -35,14 +35,16 @@ function Bookmarks() {
 					onClick={toggle}
 				/>
 
-				<div
-					onClick={() => window.open(`${bookmarkOne?.url}`, '_blank')}
+				<a
+					target='_blank'
+					rel='noopener noreferrer'
+					href={`https://${bookmarkOne?.url}`}
 					className='bookmark-link'>
 					<img
 						src={`https://www.google.com/s2/favicons?domain=${bookmarkOne?.url}&sz=48`}
 						alt='link'
 					/>
-				</div>
+				</a>
 			</div>
 		</>
 	)
