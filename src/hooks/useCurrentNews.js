@@ -10,26 +10,24 @@ export const useCurrentNews = () => {
 	const [articles, setArticles] = useState(undefined)
 
 	useEffect(() => {
-		getCurrentNews(location)
-	}, [location, setLoading, setError, setNews])
+		getCurrentNews()
+	}, [setLoading, setError, setNews])
 
 	useEffect(() => {
-		getCurrentArticles(location)
-	}, [location, setLoading, setError, setArticles])
+		getCurrentArticles()
+	}, [setLoading, setError, setArticles])
 
-	const getCurrentNews = async location => {
+	const getCurrentNews = async () => {
 		setLoading(true)
 		await axios
 			.get(
-				`https://newsapi.org/v2/top-headlines?country=${
-					location?.country_code
-				}&page=1&pageSize=3&apiKey=${
+				`https://content.guardianapis.com/search?page=1&page-size=3&q=the&api-key=${
 					import.meta.env.VITE_REACT_APP_NEWS_API_KEY
 				}`,
 			)
 			.then(response => {
 				setLoading(false)
-				setNews(response?.data?.articles)
+				setNews(response?.data?.response?.results)
 			})
 			.catch(() => {
 				setLoading(false)
@@ -37,19 +35,17 @@ export const useCurrentNews = () => {
 			})
 	}
 
-	const getCurrentArticles = async location => {
+	const getCurrentArticles = async () => {
 		setLoading(true)
 		await axios
 			.get(
-				`https://newsapi.org/v2/top-headlines?country=${
-					location?.country_code
-				}&page=2&pageSize=3&apiKey=${
+				`https://content.guardianapis.com/search?page=2&page-size=3&q=the&api-key=${
 					import.meta.env.VITE_REACT_APP_NEWS_API_KEY
 				}`,
 			)
 			.then(response => {
 				setLoading(false)
-				setArticles(response?.data?.articles)
+				setArticles(response?.data?.response?.results)
 			})
 			.catch(() => {
 				setLoading(false)

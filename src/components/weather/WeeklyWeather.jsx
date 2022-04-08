@@ -66,7 +66,7 @@ function WeeklyWeather({ place }) {
 					whileTap={{ cursor: 'grabbing' }}>
 					<motion.div
 						drag='x'
-						dragConstraints={{ right: 0, left: -width }}
+						dragConstraints={{ right: 0, left: -2400 }}
 						whileTap={{ cursor: 'grabbing' }}
 						className='flex flex-col gap-2 lg:flex-row cursor-grab'>
 						{daily?.map(day => (

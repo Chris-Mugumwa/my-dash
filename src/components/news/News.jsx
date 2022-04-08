@@ -14,31 +14,41 @@ function News() {
 				))}
 			{!loading &&
 				news?.map(articles => (
-					<div
+					<a
+						href={articles?.webUrl}
+						target='_blank'
+						rel='noopener noreferrer'
 						className='flex items-center justify-between col-span-1 row-span-2 p-1 transition duration-300 cursor-pointer lg:row-span-1 flip-card bg-blue-light'
-						key={articles?.publishedAt}
-						onClick={() => window.open(`${articles?.url}`, '_blank')}>
+						key={articles?.id}>
 						<span className='block content-["*"] h-full w-[5px] rounded-full bg-yellow-dark'></span>
-						<div className='w-[98%]'>
+						<div className='w-[98%] flex flex-col'>
 							<p className='p-1 text-xs text-center text-white md:text-sm font-poppins'>
-								{articles?.title}
+								{articles?.webTitle}
 							</p>
+							<h4 className='self-end text-yellow-dark font-ropa-sans'>
+								{articles?.sectionName}
+							</h4>
 						</div>
-					</div>
+					</a>
 				))}
 			{articles !== undefined &&
 				articles?.map(article => (
-					<div
+					<a
+						href={articles?.webUrl}
+						target='_blank'
+						rel='noopener noreferrer'
 						className='items-center justify-between hidden col-span-1 row-span-1 p-1 transition duration-300 cursor-pointer lg:flex flip-card bg-blue-light'
-						key={article?.publishedAt}
-						onClick={() => window.open(`${articles?.url}`, '_blank')}>
+						key={article?.id}>
 						<span className='block content-["*"] h-full w-[5px] rounded-full bg-yellow-dark'></span>
-						<div className='w-[98%]'>
+						<div className='w-[98%] flex flex-col'>
 							<p className='p-1 text-xs text-center text-white md:text-sm font-poppins'>
-								{article?.title}
+								{article?.webTitle}
 							</p>
+							<h4 className='self-end text-yellow-dark font-ropa-sans'>
+								{article?.sectionName}
+							</h4>
 						</div>
-					</div>
+					</a>
 				))}
 		</>
 	)

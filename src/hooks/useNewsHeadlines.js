@@ -16,14 +16,14 @@ export const useNewsHeadlines = () => {
 		setLoading(true)
 		await axios
 			.get(
-				`https://newsapi.org/v2/top-headlines?country=${
-					location?.country_code
-				}&apiKey=${import.meta.env.VITE_REACT_APP_NEWS_API_KEY}`,
+				`https://content.guardianapis.com/search?page=1&page-size=20&q=the&api-key=${
+					import.meta.env.VITE_REACT_APP_NEWS_API_KEY
+				}`,
 			)
 			.then(response => {
 				setLoading(false)
 				setError(false)
-				setArticles(response?.data?.articles)
+				setArticles(response?.data?.response?.results)
 			})
 			.catch(() => {
 				setError(true)

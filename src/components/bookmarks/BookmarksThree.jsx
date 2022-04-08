@@ -8,7 +8,7 @@ import BookmarksModalThree from './BookmarksModalThree'
 function BookmarksThree() {
 	const [bookmarkThree, setBookmarkThree] = useState({
 		name: 'bbc news',
-		url: 'https://www.bbc.com/news/world',
+		url: 'www.bbc.com/news/world',
 	})
 	const currentUser = auth?.currentUser
 	const { isOpen, toggle } = useModal()

@@ -9,7 +9,7 @@ function Bookmarks() {
 	const [bookmarkOne, setBookmarkOne] = useState([
 		{
 			name: 'youtube',
-			url: 'https://www.youtube.com',
+			url: 'www.youtube.com',
 		},
 	])
 	const currentUser = auth?.currentUser

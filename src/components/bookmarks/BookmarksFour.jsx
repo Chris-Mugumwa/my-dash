@@ -8,7 +8,7 @@ import BookmarksModalFour from './BookmarksModalFour'
 function BookmarksFour() {
 	const [bookmarkFour, setBookmarkFour] = useState({
 		name: 'netflix',
-		url: 'https://www.netflix.com/',
+		url: 'www.netflix.com/',
 	})
 	const currentUser = auth?.currentUser
 	const { isOpen, toggle } = useModal()
