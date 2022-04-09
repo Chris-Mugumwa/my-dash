@@ -1,19 +1,3 @@
-import * as Yup from 'yup'
-
-export const initialValues = { name: '', email: '', password: '' }
-
-export const validationSchema = Yup.object().shape({
-	name: Yup.string()
-		.min(2, 'Name too short')
-		.max(15, 'Name too Long')
-		.required('Required'),
-	email: Yup.string().email('Invalid email').required('Required'),
-	password: Yup.string()
-		.min(5, 'Password too short, password should be at least 6 characters')
-		.max(20, 'Password too long, password should be less than 20 characters')
-		.required('Required'),
-})
-
 export const signupData = [
 	{
 		id: 'name',

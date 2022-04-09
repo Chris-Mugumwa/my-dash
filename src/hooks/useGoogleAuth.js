@@ -12,10 +12,10 @@ export const useGoogleAuth = provider => {
 		if (googleClick === true) {
 			signInWithPopup(auth, provider)
 				.then(result => {
-					const user = result.user
+					const user = result?.user
 
 					try {
-						const usersRef = doc(db, 'users', `${user.uid}`)
+						const usersRef = doc(db, 'users', `${user?.uid}`)
 						setDoc(usersRef, {
 							id: user.uid,
 							displayName: user.displayName,

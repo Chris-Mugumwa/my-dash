@@ -17,7 +17,7 @@ function Navigation() {
 	useEffect(() => {
 		if (currentUser) {
 			setLoggedIn(true)
-			toast(`Welcome ${currentUser.displayName}!`)
+			toast(`Welcome ${currentUser?.displayName}!`)
 		}
 	}, [currentUser, setLoggedIn])
 

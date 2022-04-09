@@ -3,8 +3,6 @@ import ClipLoader from 'react-spinners/ClipLoader'
 
 function NewsHeadline({ article }) {
 	const { loading, articles } = useNewsHeadlines(article)
-
-	console.log(articles)
 	return (
 		<div className='flex flex-wrap justify-center row-start-2 row-end-6 gap-2 col-span-full'>
 			{loading && (
