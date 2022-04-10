@@ -22,9 +22,7 @@ export const useWeeklyWeather = city => {
 		if (city.length > 0) {
 			await axios
 				.get(
-					`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${
-						import.meta.env.VITE_REACT_APP_WEATHER_API_KEY
-					}`,
+					`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`,
 				)
 				.then(response => {
 					setLatitude(response?.data?.coord?.lat)
@@ -42,7 +40,7 @@ export const useWeeklyWeather = city => {
 				}&lon=${
 					longitude === undefined ? location?.longitude : longitude
 				}&exclude=minutely&units=metric&mode=json&appid=${
-					import.meta.env.VITE_REACT_APP_WEATHER_API_KEY
+					process.env.REACT_APP_WEATHER_API_KEY
 				}`,
 			)
 			.then(response => {
@@ -55,8 +53,6 @@ export const useWeeklyWeather = city => {
 				setError(true)
 			})
 	}
-
-	console.log(city)
 
 	return { loading, error, location, weeklyData }
 }

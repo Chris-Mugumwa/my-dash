@@ -17,7 +17,7 @@ export const useNewsHeadlines = () => {
 		await axios
 			.get(
 				`https://content.guardianapis.com/search?page=1&page-size=20&q=the&api-key=${
-					import.meta.env.VITE_REACT_APP_NEWS_API_KEY
+					process.env.REACT_APP_NEWS_API_KEY
 				}`,
 			)
 			.then(response => {

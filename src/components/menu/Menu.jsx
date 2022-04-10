@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { auth } from '../../firebase'
 import { NavLink } from 'react-router-dom'
 import {
 	IoLibraryOutline,
@@ -28,6 +29,10 @@ const menuData = [
 function Menu({ isOpen, toggle }) {
 	const [menuItems] = useState(menuData)
 
+	const signout = () => {
+		auth?.signOut().then(() => toggle)
+	}
+
 	return (
 		<nav className={!isOpen ? 'menu-closed' : 'menu-open'}>
 			<ul className='flex flex-col gap-2'>
@@ -48,7 +53,7 @@ function Menu({ isOpen, toggle }) {
 					className={({ isActive }) =>
 						isActive ? 'link-active' : 'link-normal'
 					}
-					onClick={() => auth.signOut()}>
+					onClick={() => signout()}>
 					<IoExitOutline className='mr-1' />
 					<h5>Logout</h5>
 				</NavLink>

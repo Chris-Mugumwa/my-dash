@@ -21,9 +21,7 @@ export const useCurrentNews = () => {
 		setLoading(true)
 		await axios
 			.get(
-				`https://content.guardianapis.com/search?page=1&page-size=3&q=the&api-key=${
-					import.meta.env.VITE_REACT_APP_NEWS_API_KEY
-				}`,
+				`https://content.guardianapis.com/search?page=1&page-size=3&q=the&api-key=${process.env.REACT_APP_NEWS_API_KEY}`,
 			)
 			.then(response => {
 				setLoading(false)
@@ -40,7 +38,7 @@ export const useCurrentNews = () => {
 		await axios
 			.get(
 				`https://content.guardianapis.com/search?page=2&page-size=3&q=the&api-key=${
-					import.meta.env.VITE_REACT_APP_NEWS_API_KEY
+					(process.env.REACT_APP_NEWS_API_KEY)
 				}`,
 			)
 			.then(response => {
