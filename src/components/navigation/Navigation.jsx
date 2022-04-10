@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Icon from '../../assets/icon.svg?component'
+import { ReactComponent as Icon } from '../../assets/icon.svg?component'
 import { useNavigate } from 'react-router-dom'
 import { IoMenuOutline, IoCloseOutline } from 'react-icons/io5'
 import { auth } from '../../firebase'
@@ -17,7 +17,7 @@ function Navigation() {
 	useEffect(() => {
 		if (currentUser) {
 			setLoggedIn(true)
-			toast(`Welcome ${currentUser.displayName}!`)
+			toast(`Welcome User!`)
 		}
 	}, [currentUser, setLoggedIn])
 

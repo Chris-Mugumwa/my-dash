@@ -12,9 +12,7 @@ export const useLocation = city => {
 	const getLocation = async city => {
 		await axios
 			.get(
-				`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${
-					import.meta.env.VITE_REACT_APP_WEATHER_API_KEY
-				}`,
+				`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`,
 			)
 			.then(response => {
 				setLatitude(response?.data?.coord?.lat)

@@ -17,7 +17,7 @@ export const useWeatherSearch = city => {
 		await axios
 			.get(
 				`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,hourly&units=metric&mode=json&appid=${
-					import.meta.env.VITE_REACT_APP_WEATHER_API_KEY
+					process.env.REACT_APP_WEATHER_API_KEY
 				}`,
 			)
 			.then(response => {

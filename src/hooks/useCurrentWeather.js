@@ -19,7 +19,7 @@ export const useCurrentWeather = () => {
 				`https://api.openweathermap.org/data/2.5/weather?lat=${
 					location?.latitude
 				}&lon=${location?.longitude}&units=metric&appid=${
-					import.meta.env.VITE_REACT_APP_WEATHER_API_KEY
+					process.env.REACT_APP_WEATHER_API_KEY
 				}`,
 			)
 			.then(response => {

@@ -13,7 +13,7 @@ function Welcome() {
 			</h2>
 			<div className='flex flex-col w-[80%] pt-4 md:pt-8 lg:flex-row lg:items-center'>
 				<button
-					className='w-full text-white transition duration-300 h-14 bg-yellow-dark hover:bg-yellow-500 hover:scale-105 active:scale-100 font-poppins md:h-14 md:w-48 rounded-xl md:text-xl lg:mr-6'
+					className='w-full text-blue-dark transition duration-300 h-14 bg-yellow-dark hover:bg-yellow-500 hover:scale-105 active:scale-100 font-poppins font-semibold md:h-14 md:w-48 rounded-xl md:text-xl lg:mr-6'
 					onClick={() => navigate('/sign-up')}>
 					Sign Up
 				</button>

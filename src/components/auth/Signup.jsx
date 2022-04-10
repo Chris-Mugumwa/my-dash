@@ -3,14 +3,29 @@ import { useNavigate } from 'react-router-dom'
 import { useGoogleAuth } from '../../hooks/useGoogleAuth'
 import { db, auth } from '../../firebase'
 import { Formik, Field, ErrorMessage, Form } from 'formik'
-import { doc, setDoc, serverTimestamp } from 'firebase/firestore'
+import { doc, setDoc } from 'firebase/firestore'
 import {
 	updateProfile,
 	createUserWithEmailAndPassword,
 	GoogleAuthProvider,
 } from 'firebase/auth'
-import { signupData, validationSchema, initialValues } from './authData'
+import { signupData } from './authData'
 import { FcGoogle } from 'react-icons/fc'
+import * as Yup from 'yup'
+
+const initialValues = { name: '', email: '', password: '' }
+
+const validationSchema = Yup.object().shape({
+	name: Yup.string()
+		.min(2, 'Name too short')
+		.max(15, 'Name too Long')
+		.required('Required'),
+	email: Yup.string().email('Invalid email').required('Required'),
+	password: Yup.string()
+		.min(5, 'Password too short, password should be at least 6 characters')
+		.max(20, 'Password too long, password should be less than 20 characters')
+		.required('Required'),
+})
 
 function Signup() {
 	const [signupSchema] = useState(signupData)
@@ -42,14 +57,14 @@ function Signup() {
 							values.password,
 						)
 							.then(userCredential => {
-								const user = userCredential.user
+								const user = userCredential?.user
 
 								updateProfile(user, {
 									displayName: values.name,
 								})
 
 								try {
-									const usersRef = doc(db, 'users', `${user.uid}`)
+									const usersRef = doc(db, 'users', `${user?.uid}`)
 									setDoc(usersRef, {
 										id: user.uid,
 										displayName: values.name,
